@@ -1,0 +1,22 @@
+# Environment variables
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local data cache
+data/
+*.parquet
+*.csv
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
