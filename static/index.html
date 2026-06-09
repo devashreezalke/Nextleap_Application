@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato AI - Restaurant Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-bg-glow"></div>
+
+    <header class="app-header">
+        <div class="header-container">
+            <h1 class="logo" id="app-title">Zomato<span>AI</span></h1>
+            <p class="tagline">Personalized Dining Recommendations Powered by Llama-3</p>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Preference Form Section -->
+        <section class="form-section card-surface" id="form-container">
+            <h2 class="section-title">Your Culinary Preferences</h2>
+            <form id="preferences-form">
+                <!-- Location Input -->
+                <div class="input-group">
+                    <label for="location-input">Where are you looking to dine?</label>
+                    <input type="text" id="location-input" list="locations-list" placeholder="Enter City/Locality (e.g., Bangalore, Delhi)" required autocomplete="off">
+                    <datalist id="locations-list"></datalist>
+                </div>
+
+                <!-- Cuisine Input -->
+                <div class="input-group">
+                    <label for="cuisine-input">Cuisine Type (Optional)</label>
+                    <input type="text" id="cuisine-input" list="cuisines-list" placeholder="e.g. Italian, North Indian, Chinese" autocomplete="off">
+                    <datalist id="cuisines-list"></datalist>
+                </div>
+
+                <!-- Budget Selection -->
+                <div class="input-group">
+                    <label>What is your budget tier?</label>
+                    <div class="budget-chips" id="budget-container">
+                        <button type="button" class="budget-chip" data-value="low" id="budget-low-btn">
+                            <span class="currency">₹</span> Low
+                            <span class="cost-hint">&le; 500 for 2</span>
+                        </button>
+                        <button type="button" class="budget-chip active" data-value="medium" id="budget-medium-btn">
+                            <span class="currency">₹₹</span> Medium
+                            <span class="cost-hint">501-1500 for 2</span>
+                        </button>
+                        <button type="button" class="budget-chip" data-value="high" id="budget-high-btn">
+                            <span class="currency">₹₹₹</span> High
+                            <span class="cost-hint">> 1500 for 2</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="budget-input" value="medium">
+                </div>
+
+                <!-- Rating and Top K Sliders -->
+                <div class="sliders-row">
+                    <div class="input-group half-width">
+                        <label for="rating-input">Minimum Rating: <span class="badge" id="rating-val-display">3.5 ★</span></label>
+                        <input type="range" id="rating-input" min="1.0" max="5.0" step="0.1" value="3.5">
+                    </div>
+                    <div class="input-group half-width">
+                        <label for="topk-input">Suggestions Count: <span class="badge" id="topk-val-display">5</span></label>
+                        <input type="range" id="topk-input" min="1" max="10" step="1" value="5">
+                    </div>
+                </div>
+
+                <!-- Free Text Preferences -->
+                <div class="input-group">
+                    <div class="label-row">
+                        <label for="additional-input">Special Preferences / Vibe requests</label>
+                        <span class="char-counter" id="char-counter">0 / 300</span>
+                    </div>
+                    <textarea id="additional-input" placeholder="e.g. kid-friendly, romantic candle light dinner, outdoor seating, quick bites" maxlength="300" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="find-restaurants-btn">
+                    <span>Generate AI Recommendations</span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="results-container">
+            <!-- Initial Empty State -->
+            <div class="empty-state card-surface" id="empty-state">
+                <div class="empty-icon">🍽️</div>
+                <h3>Hungry for Recommendations?</h3>
+                <p>Fill out the preferences panel on the left, and our LLM-powered engine will rank, filter, and explain the best spots for you.</p>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state hidden" id="loading-state">
+                <div class="loading-spinner-wrapper">
+                    <div class="loading-spinner"></div>
+                </div>
+                <p class="loading-message" id="loading-msg">Consulting local dining records...</p>
+                <div class="skeleton-grid">
+                    <div class="skeleton-card card-surface"></div>
+                    <div class="skeleton-card card-surface"></div>
+                    <div class="skeleton-card card-surface"></div>
+                </div>
+            </div>
+
+            <!-- Fallback Alert Banner -->
+            <div class="fallback-banner hidden" id="fallback-banner">
+                <span class="fallback-icon">⚠️</span>
+                <div class="fallback-content">
+                    <h4>Generative AI Engine Offline</h4>
+                    <p>We are serving pre-filtered, verified database records sorted by rating directly. Review explanations may be generic.</p>
+                </div>
+            </div>
+
+            <!-- Main Recommendations Outputs -->
+            <div class="results-content hidden" id="results-content">
+                <!-- AI Generated Summary Header -->
+                <div class="summary-card card-surface" id="ai-summary-card">
+                    <div class="ai-sparkle-icon">✨</div>
+                    <p class="ai-summary-text" id="ai-summary-text">Summary of recommendations will appear here...</p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="recommendations-grid" id="recommendations-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>Built with FastAPI & Groq (Llama-3). Offline-resilience enabled.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

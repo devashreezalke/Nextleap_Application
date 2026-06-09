@@ -24,6 +24,7 @@ This document outlines the phase-wise development roadmap for the AI-Powered Res
     *   Standardize locality/city strings.
     *   Convert cuisine comma-separated lists into standardized python arrays.
     *   Map `Average Cost for two` to budget classes (`low` $\le 500$, `medium` $500\text{-}1500$, `high` $> 1500$).
+    *   Deduplicate restaurants grouping on `name` and `location`, retaining the entry with the highest rating and votes.
 4.  **Pipeline Orchestrator (`src/app/ingestion/pipeline.py` & `scripts/ingest.py`):**
     *   Write normalized records into a processed Parquet file: `data/processed/restaurants.parquet`.
 

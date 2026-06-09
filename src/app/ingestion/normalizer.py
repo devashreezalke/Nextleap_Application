@@ -45,8 +45,8 @@ def clean_cost(val) -> float:
     if pd.isna(val):
         return 0.0
     val_str = str(val).strip()
-    # Remove commas and other non-numeric symbols
-    cleaned = re.sub(r"[^\d\.]", "", val_str)
+    # Remove all non-numeric characters
+    cleaned = re.sub(r"[^\d]", "", val_str)
     try:
         return float(cleaned) if cleaned else 0.0
     except ValueError:
@@ -130,5 +130,15 @@ def normalize_dataset(df: pd.DataFrame) -> pd.DataFrame:
         })
         
     normalized_df = pd.DataFrame(normalized_data)
-    logger.info(f"Schema normalization complete. Rows retained: {len(normalized_df)} / {len(df)}")
+    
+    # Deduplicate to keep only unique restaurants per location
+    if not normalized_df.empty:
+        # Sort so that we keep the entry with highest rating and votes
+        normalized_df = normalized_df.sort_values(by=["rating", "votes"], ascending=[False, False])
+        normalized_df = normalized_df.drop_duplicates(subset=["name", "location"], keep="first")
+        # Re-assign sequential unique IDs
+        normalized_df = normalized_df.reset_index(drop=True)
+        normalized_df["id"] = [f"zom_{i}" for i in range(len(normalized_df))]
+        
+    logger.info(f"Schema normalization complete. Unique records retained: {len(normalized_df)} / {len(df)}")
     return normalized_df

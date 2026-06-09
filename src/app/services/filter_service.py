@@ -49,7 +49,7 @@ def filter_restaurants(
         
         # Check if the user's cuisine matches any item in the restaurant's cuisines list
         def cuisine_matches(cuisines_list) -> bool:
-            if not isinstance(cuisines_list, (list, tuple, pd.Series)):
+            if not hasattr(cuisines_list, "__iter__") or isinstance(cuisines_list, str):
                 return False
             return any(cuisine_query in str(c).lower() for c in cuisines_list)
             

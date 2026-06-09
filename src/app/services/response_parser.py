@@ -84,10 +84,9 @@ def generate_fallback_recommendations(
     candidates: List[Restaurant], 
     preferences: UserPreferences
 ) -> Dict[str, Any]:
-    """
-    Generates structured recommendations directly from pre-sorted candidates without calling the LLM.
-    """
-    selected = candidates[:preferences.top_k]
+    # Sort candidates by rating and votes descending to guarantee order
+    sorted_candidates = sorted(candidates, key=lambda x: (x.rating, x.votes), reverse=True)
+    selected = sorted_candidates[:preferences.top_k]
     recommendations_list = []
     
     for idx, r in enumerate(selected):

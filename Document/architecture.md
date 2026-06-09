@@ -136,7 +136,7 @@ Fetch dataset via datasets library or HF hub
 SchemaNormalizer
 Map raw columns → canonical Restaurant model
 Preprocessor
-Clean nulls, normalize location strings, parse cuisine lists, map cost to budget bands
+Clean nulls, normalize location strings, parse cuisine lists, map cost to budget bands, and deduplicate duplicate restaurant rows by grouping on name and location, keeping the entry with the highest rating and votes.
 PersistenceWriter
 Write to Parquet, SQLite, or pickle for runtime reads
 
@@ -150,7 +150,7 @@ Canonical field
 Notes
 Restaurant name
 name: str
-Trim, dedupe key component
+Trim; deduplicate by name + location, keeping the highest rating & votes entry
 City / locality
 location: str
 Case-insensitive match for user input
