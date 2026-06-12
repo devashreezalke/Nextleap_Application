@@ -2,8 +2,7 @@
 FROM python:3.11
 
 # Set environment variables
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONPATH=src
+ENV PYTHONUNBUFFERED=1
 
 # Set working directory
 WORKDIR /app
@@ -23,5 +22,5 @@ COPY static/ ./static
 # Expose default port
 EXPOSE 8000
 
-# Start uvicorn server
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Start uvicorn server specifying the application directory (src)
+CMD ["sh", "-c", "uvicorn app.main:app --app-dir src --host 0.0.0.0 --port ${PORT:-8000}"]
