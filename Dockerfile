@@ -1,5 +1,5 @@
-# Use official lightweight Python base image
-FROM python:3.11-slim
+# Use official full Python base image (contains compilers and development headers)
+FROM python:3.11
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
@@ -8,10 +8,8 @@ ENV PYTHONUNBUFFERED=1 \
 # Set working directory
 WORKDIR /app
 
-# Install system compiler tools for packages if needed
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Upgrade pip to ensure latest wheel support
+RUN pip install --no-cache-dir --upgrade pip
 
 # Copy requirements and install dependencies
 COPY requirements.txt .
@@ -22,7 +20,7 @@ COPY data/ ./data
 COPY src/ ./src
 COPY static/ ./static
 
-# Expose default port (Railway automatically overrides this)
+# Expose default port
 EXPOSE 8000
 
 # Start uvicorn server
