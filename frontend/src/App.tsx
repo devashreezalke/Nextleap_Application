@@ -55,6 +55,8 @@ const LOADING_MESSAGES = [
   "Generating personalized explanation metrics..."
 ];
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+
 export default function App() {
   // Input fields states
   const [location, setLocation] = useState('');
@@ -81,8 +83,8 @@ export default function App() {
     async function fetchMetadata() {
       try {
         const [locRes, cuisRes] = await Promise.all([
-          fetch("/api/v1/metadata/locations"),
-          fetch("/api/v1/metadata/cuisines")
+          fetch(`${API_BASE}/api/v1/metadata/locations`),
+          fetch(`${API_BASE}/api/v1/metadata/cuisines`)
         ]);
         if (locRes.ok) {
           const locData = await locRes.json();
@@ -136,7 +138,7 @@ export default function App() {
         top_k: 5
       };
 
-      const response = await fetch("/api/v1/recommendations", {
+      const response = await fetch(`${API_BASE}/api/v1/recommendations`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

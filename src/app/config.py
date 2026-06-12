@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "info"
     HOST: str = "127.0.0.1"
     PORT: int = 8000
+    ALLOWED_ORIGINS: str = "*"
     LLM_MODEL: str = "llama-3.1-8b-instant"
     BUDGET_LOW_MAX: int = 500
     BUDGET_MEDIUM_MAX: int = 1500

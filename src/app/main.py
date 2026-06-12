@@ -50,10 +50,11 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Enable CORS policies for offline development
+# Enable CORS policies for offline development and deployment
+origins = [origin.strip() for origin in settings.ALLOWED_ORIGINS.split(",") if origin.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
