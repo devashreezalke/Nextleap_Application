@@ -2,7 +2,7 @@ import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    GROQ_API_KEY: str
+    GROQ_API_KEY: str = ""
     LOG_LEVEL: str = "info"
     HOST: str = "127.0.0.1"
     PORT: int = 8000
