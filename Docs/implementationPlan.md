@@ -17,7 +17,7 @@ Based on the architecture and problem statement, this document outlines the step
 
 ## Phase 3: Embedding & Vector Store Setup
 **Objective:** Chunk the extracted text and build the semantic search database.
-* **3.1 Semantic Chunking (`ingest.py`):** Use LangChain to split the extracted text into structural, context-aware chunks (e.g., grouped by "Metrics", "Fund Management", "Asset Allocation").
+* **3.1 Context-Enriched Section Chunking (`ingestion/chunker.py`):** Bypass generic text splitters. Create exactly one chunk per JSON section and prepend the Fund Name and Metric Name to the value (e.g., "Fund Name: HDFC Mid-Cap Fund. Expense Ratio: 0.76%."). This explicit context injection ensures highly accurate retrieval.
 * **3.2 Local Embedding:** Integrate the `BAAI/bge-small-en-v1.5` model via Sentence-Transformers to convert text chunks into dense vectors.
 * **3.3 Vector Database Integration:** Initialize `ChromaDB` (or FAISS) to store the vectors locally.
 * **3.4 Metadata Tagging:** Ensure every chunk is tagged with its source URL and extraction timestamp to support mandatory citations.
