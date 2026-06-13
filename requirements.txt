@@ -1,0 +1,11 @@
+fastapi==0.110.0
+uvicorn==0.28.0
+beautifulsoup4==4.12.3
+requests==2.31.0
+langchain==0.1.13
+chromadb==0.4.24
+sentence-transformers==2.5.1
+groq==0.4.2
+python-dotenv==1.0.1
+black==24.3.0
+flake8==7.0.0
