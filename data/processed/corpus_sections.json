@@ -1,0 +1,82 @@
+[
+    {
+        "fund_id": "hdfc-defence-fund-direct-growth",
+        "url": "https://groww.in/mutual-funds/hdfc-defence-fund-direct-growth",
+        "fetch_timestamp": "2026-06-14 00:01:31",
+        "sections": {
+            "overview": "HDFC Defence Fund Direct Growth",
+            "expense_ratio": "0.89%",
+            "exit_load": "Exit load of 1%, if redeemed within 1 year.",
+            "minimum_investment": "Lumpsum: 100, SIP: 100",
+            "benchmark": "Nifty India Defence Total Return Index",
+            "fund_house": "HDFC Mutual Fund",
+            "investment_objective": "The scheme seeks to provide long-term capital appreciation by investing predominantly in equity and equity related securities of Defence & allied sector companies.",
+            "tax": "If you redeem within one year, returns are taxed at 20%. If you redeem after one year, returns exceeding Rs 1.25 lakh in a financial year are taxed at 12.5%.",
+            "fund_management": "Unknown, Unknown, Unknown"
+        }
+    },
+    {
+        "fund_id": "hdfc-gold-etf-fund-of-fund-direct-plan-growth",
+        "url": "https://groww.in/mutual-funds/hdfc-gold-etf-fund-of-fund-direct-plan-growth",
+        "fetch_timestamp": "2026-06-14 00:01:28",
+        "sections": {
+            "overview": "HDFC Gold ETF Fund of Fund Direct Plan Growth",
+            "expense_ratio": "0.2%",
+            "exit_load": "Exit load of 1%, if redeemed within 15 days.",
+            "minimum_investment": "Lumpsum: 100, SIP: 100",
+            "benchmark": "Domestic Price of Gold",
+            "fund_house": "HDFC Mutual Fund",
+            "investment_objective": "The Scheme seeks to generate capital appreciation by investing in units of HDFC Gold Exchange Traded Fund.",
+            "tax": "If you redeem within two years, returns are taxed as per your Income Tax slab. If you redeem after two years, returns are taxed at 12.5%.",
+            "fund_management": "Unknown, Unknown"
+        }
+    },
+    {
+        "fund_id": "hdfc-large-cap-fund-direct-growth",
+        "url": "https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth",
+        "fetch_timestamp": "2026-06-14 00:01:22",
+        "sections": {
+            "overview": "HDFC Large Cap Fund Direct Growth",
+            "expense_ratio": "1.04%",
+            "exit_load": "Exit load of 1% if redeemed within 1 year",
+            "minimum_investment": "Lumpsum: 100, SIP: 100",
+            "benchmark": "NIFTY 100 Total Return Index",
+            "fund_house": "HDFC Mutual Fund",
+            "investment_objective": "The scheme seeks to provide long-term capital appreciation/income by investing predominantly in Large-Cap companies.",
+            "tax": "If you redeem within one year, returns are taxed at 20%. If you redeem after one year, returns exceeding Rs 1.25 lakh in a financial year are taxed at 12.5%.",
+            "fund_management": "Unknown, Unknown"
+        }
+    },
+    {
+        "fund_id": "hdfc-mid-cap-fund-direct-growth",
+        "url": "https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth",
+        "fetch_timestamp": "2026-06-14 00:01:19",
+        "sections": {
+            "overview": "HDFC Mid Cap Fund Direct Growth",
+            "expense_ratio": "0.76%",
+            "exit_load": "Exit load of 1% if redeemed within 1 year.",
+            "minimum_investment": "Lumpsum: 100, SIP: 100",
+            "benchmark": "NIFTY Midcap 150 Total Return Index",
+            "fund_house": "HDFC Mutual Fund",
+            "investment_objective": "The scheme seeks to provide long-term capital appreciation/income by investing predominantly in Mid-Cap companies.",
+            "tax": "If you redeem within one year, returns are taxed at 20%. If you redeem after one year, returns exceeding Rs 1.25 lakh in a financial year are taxed at 12.5%.",
+            "fund_management": "Unknown, Unknown"
+        }
+    },
+    {
+        "fund_id": "hdfc-small-cap-fund-direct-growth",
+        "url": "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth",
+        "fetch_timestamp": "2026-06-14 00:01:25",
+        "sections": {
+            "overview": "HDFC Small Cap Fund Direct Growth",
+            "expense_ratio": "0.77%",
+            "exit_load": "Exit load of 1% if redeemed within 1 year",
+            "minimum_investment": "Lumpsum: 100, SIP: 100",
+            "benchmark": "BSE 250 SmallCap Total Return Index",
+            "fund_house": "HDFC Mutual Fund",
+            "investment_objective": "The scheme seeks to provide long-term capital appreciation /income by investing predominantly in Small-Cap companies.",
+            "tax": "If you redeem within one year, returns are taxed at 20%. If you redeem after one year, returns exceeding Rs 1.25 lakh in a financial year are taxed at 12.5%.",
+            "fund_management": "Unknown, Unknown"
+        }
+    }
+]
