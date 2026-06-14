@@ -118,12 +118,12 @@ def get_answer(query: str) -> str:
     except Exception as e:
         return f"Error contacting language model: {e}"
 
-    # 4. Programmatic Citations (Mandatory compliance)
+    # 4. Programmatic Citations (Mandatory compliance - Phase 5)
     top_metadata = metadatas[0]
     source_url = top_metadata.get("source_url", "Unknown")
     fetch_timestamp = top_metadata.get("fetch_timestamp", "Unknown")
     
-    citation = f"\n\n---\n**Source:** [Link]({source_url})\n**Last Updated:** {fetch_timestamp}"
+    citation = f"\n\nSource: {source_url}\nLast updated from sources: {fetch_timestamp}"
     
     return answer + citation
 

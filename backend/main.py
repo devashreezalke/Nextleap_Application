@@ -2,7 +2,17 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from backend.retrieval import get_answer
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(title="Mutual Fund FAQ Assistant API", version="1.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class QueryRequest(BaseModel):
     query: str
@@ -10,7 +20,7 @@ class QueryRequest(BaseModel):
 class QueryResponse(BaseModel):
     answer: str
 
-@app.post("/ask", response_model=QueryResponse)
+@app.post("/api/chat", response_model=QueryResponse)
 def ask_question(request: QueryRequest):
     """
     Accepts a factual question about the supported HDFC Mutual Funds
