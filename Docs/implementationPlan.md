@@ -24,8 +24,8 @@ Based on the architecture and problem statement, this document outlines the step
 
 ## Phase 4: LLM Integration & Guardrails
 **Objective:** Connect the language model and enforce the strict facts-only compliance rules.
-* **4.1 Groq / Llama-3 Integration:** Set up the LLM client to route queries to the `llama3-8b-8192` model.
-* **4.2 Retrieval Logic:** Build the semantic search function to retrieve the Top-$K$ (e.g., 3) most relevant chunks from ChromaDB based on the user's query.
+* **4.1 Groq / Llama-3 Integration:** Set up the LLM client to route queries to the `llama-3.1-8b-instant` model.
+* **4.2 Retrieval Logic:** Implement a Hybrid Retrieval Strategy in `backend/retrieval.py`. First, detect the fund entity from the query to apply a strict metadata filter (`fund_id`). Then, perform semantic search to retrieve the Top-K relevant chunks, guaranteeing hallucination-free retrieval.
 * **4.3 Prompt Engineering:** Design the system prompt to enforce the following constraints:
   * Answer strictly using the provided context.
   * Maximum 3 sentences per response.
