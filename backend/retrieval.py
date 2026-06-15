@@ -22,7 +22,13 @@ embeddings = HuggingFaceBgeEmbeddings(
 
 # Initialize ChromaDB client
 client = chromadb.PersistentClient(path=str(VECTOR_STORE_DIR))
-collection = client.get_collection(name="mutual_fund_faq")
+try:
+    collection = client.get_collection(name="mutual_fund_faq")
+except Exception:
+    print("Collection 'mutual_fund_faq' not found. Re-building vector store...")
+    from ingestion.embed import run_embedding
+    run_embedding()
+    collection = client.get_collection(name="mutual_fund_faq")
 
 # Initialize Groq client
 groq_client = Groq(api_key=GROQ_API_KEY)
