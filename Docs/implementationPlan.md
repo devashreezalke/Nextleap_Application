@@ -47,8 +47,9 @@ Based on the architecture and problem statement, this document outlines the step
   * Build the chat input and message history display.
 * **6.3 Integration:** Connect the frontend to the FastAPI `/api/chat` endpoint.
 
-## Phase 7: Testing & Compliance Verification
-**Objective:** Ensure the assistant rigorously adheres to all constraints.
+## Phase 7: Testing, Compliance & Automation
+**Objective:** Ensure the assistant rigorously adheres to all constraints and stays up-to-date.
 * **7.1 Factual Testing:** Verify the assistant accurately answers specific mutual fund queries (e.g., "What is the exit load for HDFC Defence Fund?") using only the 5 URLs.
 * **7.2 Refusal Testing:** Attempt to ask "Should I invest in the HDFC Mid Cap fund?" to verify the refusal logic triggers correctly.
+* **7.3 Automated Ingestion Scheduler:** Create a `scheduler.py` script that runs daily at 10:00 AM IST to trigger the `fetch`, `parse`, `chunker`, and `embed` pipelines. This guarantees the factual corpus never goes stale.
 * **7.3 Constraint Verification:** Programmatically check that responses never exceed 3 sentences, always include exactly one citation, and always have the timestamp footer.
